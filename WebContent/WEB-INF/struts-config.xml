@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts-config PUBLIC "-//Apache Software Foundation//DTD Struts 
+Configuration 1.3//EN" "http://struts.apache.org/dtds/struts-config_1_3.dtd">
+<struts-config>
+	<form-beans>
+		<!-- La mot doi tuong -->
+		<form-bean name="nguoidungForm" type="form.NguoiDungForm" />
+		<form-bean name="danhSachSinhVienForm" type="form.DanhSachSinhVienForm"/>
+		<form-bean name="sinhVienForm" type="form.SinhVienForm"/>
+	</form-beans>
+	<action-mappings>
+		<action input="/dangNhap.jsp" path="/dang-nhap" scope="request" 
+			name="nguoidungForm" type="action.NguoiDungAction" > <!-- path: tu action form client gui len,name:first, type:later -->
+			<forward name="thanhCong" path="/danh-sach.do" redirect="true" />
+			<forward name="thatBai" path="/dangNhap.jsp" />
+		</action>
+		<action input="/dangNhap.jsp" path="/danh-sach" name="danhSachSinhVienForm"
+				scope="request" type="action.DanhSachSinhVienAction">
+			<forward name="dsSinhVien" path="/danhSachSinhVien.jsp" />
+		</action>
+		<action input="/themSinhVien.jsp" name="sinhVienForm"
+			  path="/themSV" scope="request" type="action.ThemSinhVienAction" validate="true">
+			<forward name="themThanhCong" path="/danh-sach.do" redirect="true"></forward>
+			<forward name="themThatBai" path="/themSinhVien.jsp"></forward>
+		</action>
+	</action-mappings>
+</struts-config>
