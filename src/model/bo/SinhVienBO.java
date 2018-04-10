@@ -23,4 +23,15 @@ public class SinhVienBO {
 			String maKhoa) {
 		return sinhvienDAO.themSinhVien(msv, hoTen, gioiTinh, maKhoa);
 	}
+
+	// sua sinh vien:
+	public boolean suaSinhVien(String msv, String hoTen, String gioiTinh,
+			String maKhoa) {
+		return sinhvienDAO.suaSinhVien(msv, hoTen, gioiTinh, maKhoa);
+	}
+
+	// get sinh vien bang ma sinh vien:
+	public SinhVien getThongTinSinhVien(String msv) {
+		return sinhvienDAO.getThongTinSinhVien(msv);
+	}
 }

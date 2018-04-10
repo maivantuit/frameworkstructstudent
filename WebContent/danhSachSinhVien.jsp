@@ -48,7 +48,7 @@
 						<th>Họ và tên</th>
 						<th>Giới tính</th>
 						<th>Khoa</th>
-						<th></th>
+						<th>Chức năng</th>
 					</tr>
 				</thead>
 				<tbody>
@@ -61,10 +61,10 @@
 							<td><bean:write name="sv" property="tenKhoa" /></td>
 							<td><bean:define id="msv" name="sv" property="msv"></bean:define>
 								<html:link action="/suaSV?msv=${msv}">
-									<span class="glyphicon glyphicon-edit"></span>
+									<span>Sửa</span>
 								</html:link> <html:link action="/xoaSV?msv=${msv}"
 									style="margin-left: 30px;">
-									<span class="glyphicon glyphicon-trash"></span>
+									<span>Xóa</span>
 								</html:link></td>
 						</tr>
 					</logic:iterate>

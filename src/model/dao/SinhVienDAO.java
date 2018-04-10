@@ -101,6 +101,47 @@ public class SinhVienDAO {
 		}
 		return false;
 	}
+	// sua sinh vien:
+	public boolean suaSinhVien(String msv, String hoTen, String gioiTinh, String maKhoa) {
+		connect();
+		String sql=	String.format("UPDATE SinhVien "+
+					" SET HoTen = N'%s', GioiTinh = %s, MaKhoa = '%s' " +
+					" WHERE msv = '%s'", hoTen, gioiTinh, maKhoa, msv);
+		try {
+			Statement stmt = connection.createStatement();
+			stmt.executeUpdate(sql);
+			return true;
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return false;
+	}
+	// get sinh vien bang ma sinh vien:
+	public SinhVien getThongTinSinhVien(String msv) {
+		connect();
+		String sql=	String.format("SELECT HoTen, GioiTinh, MaKhoa, msv "+
+					" FROM SinhVien WHERE msv = '%s'", msv);
+		ResultSet rs = null;
+		try {
+			Statement stmt = connection.createStatement();
+			rs = stmt.executeQuery(sql);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+		SinhVien sinhVien = new SinhVien();
+		try {
+			while(rs.next()){
+				sinhVien.setMsv(msv);
+				sinhVien.setHoTen(rs.getString("HoTen"));
+				sinhVien.setGioiTinh(rs.getString("GioiTinh"));
+				sinhVien.setMaKhoa(rs.getString("MaKhoa"));
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return sinhVien;
+	}
 	public static void main(String[] args) {
 		SinhVienDAO sinhVienDAO = new SinhVienDAO();
 		boolean checkThem = sinhVienDAO.themSinhVien("SV30", "Kun", "1", "CNTT");
