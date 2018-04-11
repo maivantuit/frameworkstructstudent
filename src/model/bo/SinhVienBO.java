@@ -34,4 +34,9 @@ public class SinhVienBO {
 	public SinhVien getThongTinSinhVien(String msv) {
 		return sinhvienDAO.getThongTinSinhVien(msv);
 	}
+
+	// xoa sinh vien:
+	public boolean xoaSinhVien(String msv) {
+		return sinhvienDAO.xoaSinhVien(msv);
+	}
 }

@@ -142,9 +142,22 @@ public class SinhVienDAO {
 		}
 		return sinhVien;
 	}
+	// xoa sinh vien:
+	public boolean xoaSinhVien(String msv) {
+		connect();
+		String sql=	String.format("DELETE FROM SinhVien WHERE msv = '%s'", msv);	
+		try {
+			Statement stmt = connection.createStatement();
+			stmt.executeUpdate(sql);
+			return true;
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return  false;
+	}
 	public static void main(String[] args) {
 		SinhVienDAO sinhVienDAO = new SinhVienDAO();
-		boolean checkThem = sinhVienDAO.themSinhVien("SV30", "Kun", "1", "CNTT");
+		boolean checkThem = sinhVienDAO.xoaSinhVien("SV30");
 		if(checkThem){
 			System.out.println("ok");
 		}else{
