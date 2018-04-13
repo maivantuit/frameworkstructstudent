@@ -11,40 +11,52 @@
 <html>
 	<head>
 		<meta charset="UTF-8">
-		<title>Thêm sinh viên</title>
-		<title>Insert title here</title>
+		<title><bean:message key="title.themsinhvien" /></title>
+		
 	</head>
 	<body>
 		<div class="container">
-			<h3>Thêm mới sinh viên</h3>
+			<h3><bean:message key="h3.themsinhvien" /></h3>
 			<br>
 			<html:form action="/themSV" method="post"> <!--/themSV: Đường dẫn -->
 				<div class="row form-group">
-					<label>Mã SV</label>
+					<label><bean:message key="field.masv" /></label>
 					<div>
 						<html:text property="msv"></html:text>
 					</div>
+					<h3 style="color:red">
+						<html:errors property="msvError"/>
+					</h3>
 				</div>
 				<div>
-					<label>Họ tên</label>
+					<label><bean:message key="field.hoten" /></label>
 					<div>
 						<html:text property="hoTen"></html:text>
 					</div>
+					<h3 style="color:red">
+						<html:errors property="hoTenError"/>
+					</h3>
 				</div>
 				<div>
-					<label>Giới tính</label>
+					<label><bean:message key="field.gioitinh"/></label>
 					<div>
 						<html:text property="gioiTinh"></html:text>
 					</div>
+					<h3 style="color:red">
+						<html:errors property="gioiTinhError"/>
+					</h3>
 				</div>
 				<div>
-					<label>Khoa</label>
+					<label><bean:message key="field.khoa"/></label>
 					<div>
 						<html:select property="maKhoa">
-							<option value="">--Chọn khoa--</option>
+							<option value=""><bean:message key="combo.chonkhoa"/></option>
 							<html:optionsCollection name="sinhVienForm" property="listKhoa" label="tenKhoa" value="maKhoa"/>
 						</html:select>
 					</div>
+					<h3 style="color:red">
+						<html:errors property="khoaError"/>
+					</h3>
 				</div>
 				<div>
 					<div>

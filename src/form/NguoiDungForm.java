@@ -1,6 +1,13 @@
 package form;
 
+import javax.servlet.http.HttpServletRequest;
+
+import org.apache.struts.action.ActionErrors;
 import org.apache.struts.action.ActionForm;
+import org.apache.struts.action.ActionMapping;
+import org.apache.struts.action.ActionMessage;
+
+import common.StringProcess;
 
 public class NguoiDungForm extends ActionForm{
 	private String tenDangNhap;
@@ -41,6 +48,18 @@ public class NguoiDungForm extends ActionForm{
 	 */
 	public void setThongBao(String thongBao) {
 		this.thongBao = thongBao;
+	}
+	@Override
+	public ActionErrors validate(ActionMapping mapping,
+			HttpServletRequest request) {
+		ActionErrors actionErrors =new ActionErrors();
+		if(StringProcess.notVaild(tenDangNhap)){
+			actionErrors.add("tenDangNhapError", new ActionMessage("error.tenDangNhap"));
+		}
+		if(StringProcess.notVaild(matKhau)){
+			actionErrors.add("matKhauError", new ActionMessage("error.matKhau"));
+		}
+		return actionErrors;
 	}
 	
 	

@@ -13,8 +13,14 @@
 	<html:form action="/dang-nhap" method="post">
 		<label>Tên đăng nhập</label>
 		<html:text property="tenDangNhap" name="nguoidungForm"></html:text>
+		<h3 style="color: red">
+			<html:errors property="IDError" />
+		</h3>
 		<label>Khẩu khẩu</label>
 		<html:password property="matKhau" name="nguoidungForm"></html:password>
+		<h3 style="color: red">
+			<html:errors property="PassError" />
+		</h3>
 		<html:submit>Đăng nhập</html:submit>
 		<button type="reset">Hủy</button>
 	</html:form>
